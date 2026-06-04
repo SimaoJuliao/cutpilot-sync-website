@@ -119,13 +119,17 @@ export const pt: Strings = {
             'Clica "Mais informações" no aviso',
             'Clica "Executar mesmo assim"',
           ],
+          command: '',
         },
         macos: {
-          warning: 'Se aparecer um aviso de segurança:',
+          warning: 'Para instalar e abrir a app:',
           steps: [
-            'Ctrl+clica o ficheiro .dmg e seleciona "Abrir"',
-            'Ou: Definições → Privacidade → "Abrir Mesmo Assim"',
+            'Abre o .dmg e arrasta o CutPilot Sync para a pasta Applications',
+            'Abre o Terminal (Applications → Utilities → Terminal)',
+            'Corre o comando abaixo para remover o bloqueio do sistema:',
+            'Abre a app normalmente',
           ],
+          command: 'xattr -cr /Applications/CutPilot\\ Sync.app',
         },
         linux: {
           warning: 'Para executar o AppImage:',
@@ -133,6 +137,7 @@ export const pt: Strings = {
             'Torna-o executável: chmod +x CutPilot-Sync-*.AppImage',
             'Executa: ./CutPilot-Sync-*.AppImage',
           ],
+          command: '',
         },
       },
     },

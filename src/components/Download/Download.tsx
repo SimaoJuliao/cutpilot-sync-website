@@ -1,4 +1,5 @@
-import { Download as DownloadIcon, CheckCircle2 } from 'lucide-react'
+import { useState } from 'react'
+import { Download as DownloadIcon, CheckCircle2, Copy, Check } from 'lucide-react'
 import { cn } from '@lib'
 import { useLocale } from '@hooks'
 import useDownload, { platformIds } from './useDownload'
@@ -19,6 +20,31 @@ const AppleIcon = () => (
 const LinuxIcon = () => (
   <span className="text-2xl leading-none select-none" aria-hidden>🐧</span>
 )
+
+const CopyCommand = ({ command }: { command: string }) => {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(command)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
+  return (
+    <button
+      onClick={handleCopy}
+      className="w-full flex items-center justify-between gap-2 px-3 py-2 rounded-lg bg-black/30 border border-white/10 hover:border-primary/30 transition-colors group"
+    >
+      <code className="text-[10px] font-mono text-primary/70 truncate">{command}</code>
+      <span className="shrink-0 text-white/30 group-hover:text-primary/60 transition-colors">
+        {copied
+          ? <Check className="w-3 h-3 text-primary" />
+          : <Copy className="w-3 h-3" />
+        }
+      </span>
+    </button>
+  )
+}
 
 const OsIcon = ({ id }: { id: PlatformId }) => {
   if (id === 'windows') return <WindowsIcon />
@@ -91,11 +117,13 @@ export const Download = () => {
                     </ol>
                   </div>
 
+                  {/* Copyable command */}
+                  {guide.command && <CopyCommand command={guide.command} />}
+
                   {/* Download again */}
                   <a
                     href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    onClick={(e) => { e.preventDefault(); window.location.href = url }}
                     className="text-[10px] font-mono text-primary/40 hover:text-primary/70 transition-colors tracking-widest text-center mt-auto pt-1"
                   >
                     {t.installGuide.downloadAgain}

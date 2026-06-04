@@ -125,13 +125,17 @@ export const en = {
             'Click "More info" on the warning dialog',
             'Click "Run anyway"',
           ] as const,
+          command: '',
         },
         macos: {
-          warning: 'If you see a security warning:',
+          warning: 'To install and open the app:',
           steps: [
-            'Ctrl-click the .dmg and select "Open"',
-            'Or: System Settings → Privacy & Security → "Open Anyway"',
+            'Open the .dmg and drag CutPilot Sync to the Applications folder',
+            'Open Terminal (Applications → Utilities → Terminal)',
+            'Run the command below to remove the OS block:',
+            'Open the app normally',
           ] as const,
+          command: 'xattr -cr /Applications/CutPilot\\ Sync.app',
         },
         linux: {
           warning: 'To run the AppImage:',
@@ -139,6 +143,7 @@ export const en = {
             'Make it executable: chmod +x CutPilot-Sync-*.AppImage',
             'Then run it: ./CutPilot-Sync-*.AppImage',
           ] as const,
+          command: '',
         },
       },
     },
