@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background:             215 28% 7%;
+    --foreground:             0 0% 96%;
+
+    --card:                   220 22% 11%;
+    --card-foreground:        0 0% 96%;
+
+    --primary:                38 100% 63%;
+    --primary-foreground:     0 0% 7%;
+
+    --muted:                  215 20% 15%;
+    --muted-foreground:       215 10% 45%;
+
+    --border:                 215 15% 18%;
+    --accent:                 38 100% 63%;
+    --accent-foreground:      0 0% 7%;
+
+    --destructive:            0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success:                142 71% 45%;
+    --success-foreground:     0 0% 100%;
+
+    --radius:                 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html, body {
+    height: 100%;
+  }
+
+  html, body, #root {
+    @apply bg-background text-foreground;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.04em;
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-border rounded-sm; }
+
+  button {
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    transition: background 0.15s, opacity 0.15s;
+  }
+  button:disabled { opacity: 0.4; cursor: not-allowed; }
+}
+
+@layer utilities {
+  .dot-grid {
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #FFC043 0%, #F9A825 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass {
+    background: rgba(13, 17, 23, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+}
