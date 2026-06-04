@@ -108,6 +108,34 @@ export const pt: Strings = {
       macos:   { label: 'macOS',   sublabel: 'macOS 12+',              ext: '.dmg image'      },
       linux:   { label: 'Linux',   sublabel: 'Ubuntu / Fedora / Arch', ext: 'AppImage · .deb' },
     },
+    installGuide: {
+      started:       'DOWNLOAD INICIADO',
+      reason:        'A app ainda não tem certificado digital, o que pode gerar um aviso de segurança do sistema.',
+      downloadAgain: '↓ Descarregar novamente',
+      platforms: {
+        windows: {
+          warning: 'Se aparecer um aviso do SmartScreen:',
+          steps: [
+            'Clica "Mais informações" no aviso',
+            'Clica "Executar mesmo assim"',
+          ],
+        },
+        macos: {
+          warning: 'Se aparecer um aviso de segurança:',
+          steps: [
+            'Ctrl+clica o ficheiro .dmg e seleciona "Abrir"',
+            'Ou: Definições → Privacidade → "Abrir Mesmo Assim"',
+          ],
+        },
+        linux: {
+          warning: 'Para executar o AppImage:',
+          steps: [
+            'Torna-o executável: chmod +x CutPilot-Sync-*.AppImage',
+            'Executa: ./CutPilot-Sync-*.AppImage',
+          ],
+        },
+      },
+    },
   },
   footer: {
     logo:      'CUTPILOT SYNC',

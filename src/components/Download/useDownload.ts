@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useAppVersion } from '@hooks'
 
 const GITHUB_REPO = import.meta.env.VITE_GITHUB_REPO as string | undefined
@@ -10,7 +11,8 @@ export type PlatformId = 'windows' | 'macos' | 'linux'
 export const platformIds: PlatformId[] = ['windows', 'macos', 'linux']
 
 const useDownload = () => {
-  const { version, loading } = useAppVersion()
+  const { version } = useAppVersion()
+  const [clickedOS, setClickedOS] = useState<PlatformId | null>(null)
 
   const platformUrls: Record<PlatformId, string | undefined> = {
     windows: RELEASES && version ? `${RELEASES}/latest/download/CutPilot-Sync-Setup-${version}.exe` : undefined,
@@ -25,7 +27,12 @@ const useDownload = () => {
     return 'linux'
   })()
 
-  return { detectedOS, platformUrls, version, loading }
+  const handleDownload = (id: PlatformId, url: string) => {
+    setClickedOS(id)
+    setTimeout(() => { window.location.href = url }, 300)
+  }
+
+  return { detectedOS, platformUrls, version, clickedOS, handleDownload }
 }
 
 export default useDownload

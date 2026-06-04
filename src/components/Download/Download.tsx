@@ -1,4 +1,4 @@
-import { Download as DownloadIcon } from 'lucide-react'
+import { Download as DownloadIcon, CheckCircle2 } from 'lucide-react'
 import { cn } from '@lib'
 import { useLocale } from '@hooks'
 import useDownload, { platformIds } from './useDownload'
@@ -28,7 +28,7 @@ const OsIcon = ({ id }: { id: PlatformId }) => {
 
 export const Download = () => {
   const { strings } = useLocale()
-  const { detectedOS, platformUrls, version } = useDownload()
+  const { detectedOS, platformUrls, version, clickedOS, handleDownload } = useDownload()
   const t = strings.download
 
   return (
@@ -50,14 +50,65 @@ export const Download = () => {
           {platformIds.map((id) => {
             const url          = platformUrls[id]
             const isDetected   = id === detectedOS
+            const isClicked    = id === clickedOS
             const platformText = t.platforms[id]
+            const guide        = t.installGuide.platforms[id]
             if (!url) return null
+
+            if (isClicked) {
+              return (
+                <div
+                  key={id}
+                  className="flex flex-col gap-4 p-6 rounded-xl border border-primary/50 bg-primary/8"
+                >
+                  {/* Header */}
+                  <div className="flex items-center justify-center gap-2 text-primary">
+                    <CheckCircle2 className="w-4 h-4 shrink-0" />
+                    <span className="font-display text-lg tracking-widest">{t.installGuide.started}</span>
+                  </div>
+
+                  {/* Reason */}
+                  <p className="text-[10px] font-mono text-white/30 leading-relaxed text-center">
+                    {t.installGuide.reason}
+                  </p>
+
+                  {/* Instructions */}
+                  <div className="flex flex-col gap-3 text-left">
+                    <p className="text-[10px] font-mono text-muted-foreground tracking-widest text-center">
+                      {guide.warning}
+                    </p>
+                    <ol className="flex flex-col gap-2">
+                      {guide.steps.map((step, i) => (
+                        <li key={i} className="flex items-start gap-2.5">
+                          <span className="text-[10px] font-mono text-primary/50 w-4 shrink-0 mt-0.5 text-right">
+                            {i + 1}.
+                          </span>
+                          <span className="text-[11px] font-mono text-foreground/60 leading-relaxed">
+                            {step}
+                          </span>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+
+                  {/* Download again */}
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[10px] font-mono text-primary/40 hover:text-primary/70 transition-colors tracking-widest text-center mt-auto pt-1"
+                  >
+                    {t.installGuide.downloadAgain}
+                  </a>
+                </div>
+              )
+            }
+
             return (
               <a
                 key={id}
                 href={url}
-                target="_blank"
-                rel="noopener noreferrer"
+                onClick={(e) => { e.preventDefault(); handleDownload(id, url) }}
                 className={cn(
                   'flex flex-col items-center gap-3 p-6 rounded-xl border transition-all duration-300',
                   isDetected
@@ -97,4 +148,3 @@ export const Download = () => {
     </section>
   )
 }
-

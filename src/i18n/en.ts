@@ -114,6 +114,34 @@ export const en = {
       macos:   { label: 'macOS',   sublabel: 'macOS 12+',              ext: '.dmg image'      },
       linux:   { label: 'Linux',   sublabel: 'Ubuntu / Fedora / Arch', ext: 'AppImage · .deb' },
     },
+    installGuide: {
+      started:      'DOWNLOAD STARTED',
+      reason:       'The app is not yet code-signed, which may trigger a security warning from your OS.',
+      downloadAgain: '↓ Download again',
+      platforms: {
+        windows: {
+          warning: 'If you see a SmartScreen warning:',
+          steps: [
+            'Click "More info" on the warning dialog',
+            'Click "Run anyway"',
+          ] as const,
+        },
+        macos: {
+          warning: 'If you see a security warning:',
+          steps: [
+            'Ctrl-click the .dmg and select "Open"',
+            'Or: System Settings → Privacy & Security → "Open Anyway"',
+          ] as const,
+        },
+        linux: {
+          warning: 'To run the AppImage:',
+          steps: [
+            'Make it executable: chmod +x CutPilot-Sync-*.AppImage',
+            'Then run it: ./CutPilot-Sync-*.AppImage',
+          ] as const,
+        },
+      },
+    },
   },
   footer: {
     logo:      'CUTPILOT SYNC',
