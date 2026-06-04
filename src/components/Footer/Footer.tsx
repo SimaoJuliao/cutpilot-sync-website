@@ -1,7 +1,7 @@
 import { Scissors } from 'lucide-react'
 import { useLocale } from '@hooks'
 
-const Footer = () => {
+export const Footer = () => {
   const { strings } = useLocale()
   const t = strings.footer
 
@@ -18,4 +18,3 @@ const Footer = () => {
   )
 }
 
-export default Footer

@@ -4,7 +4,7 @@ import { useLocale } from '@hooks'
 
 const icons: LucideIcon[] = [Upload, Sparkles, PackageCheck]
 
-const HowItWorks = () => {
+export const HowItWorks = () => {
   const { strings } = useLocale()
   const t = strings.howItWorks
 
@@ -47,4 +47,3 @@ const HowItWorks = () => {
   )
 }
 
-export default HowItWorks

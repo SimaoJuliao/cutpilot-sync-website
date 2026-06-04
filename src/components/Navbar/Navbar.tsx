@@ -10,7 +10,7 @@ const locales: { id: Locale; label: string }[] = [
   { id: 'en', label: 'English'   },
 ]
 
-const Navbar = () => {
+export const Navbar = () => {
   const { scrolled, langOpen, setLangOpen, langRef } = useNavbar()
   const { strings, locale, setLocale } = useLocale()
   const t = strings.nav
@@ -84,4 +84,3 @@ const Navbar = () => {
   )
 }
 
-export default Navbar

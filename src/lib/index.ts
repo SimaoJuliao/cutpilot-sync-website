@@ -1,2 +1,2 @@
-export { cn } from './utils'
-export { APP_VERSION } from './version'
+export * from './utils'
+export * from './version'

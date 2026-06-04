@@ -4,13 +4,13 @@ import { pt } from '@i18n/pt'
 import { en } from '@i18n/en'
 import type { Strings } from '@i18n/en'
 
-export type Locale = 'pt' | 'en'
+export type Locale = 'pt' | 'en';
 
 const localeMap: Record<Locale, Strings> = { pt, en }
 
 interface LocaleCtx {
-  strings:   Strings
-  locale:    Locale
+  strings: Strings
+  locale: Locale
   setLocale: (l: Locale) => void
 }
 
@@ -34,10 +34,8 @@ export const LocaleProvider = ({ children }: { children: ReactNode }) => {
   )
 }
 
-const useLocale = (): LocaleCtx => {
+export const useLocale = (): LocaleCtx => {
   const ctx = useContext(Ctx)
   if (!ctx) throw new Error('useLocale must be used within <LocaleProvider>')
   return ctx
 }
-
-export default useLocale

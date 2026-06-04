@@ -3,11 +3,11 @@ import type { ReactNode } from 'react'
 import { APP_VERSION } from '@lib'
 
 const GITHUB_REPO = import.meta.env.VITE_GITHUB_REPO as string | undefined
-const LATEST_API  = GITHUB_REPO
+const LATEST_API = GITHUB_REPO
   ? `https://api.github.com/repos/${GITHUB_REPO}/releases/latest`
   : undefined
 
-interface VersionCtxValue {
+export interface VersionCtxValue {
   version: string | undefined
   loading: boolean
 }
@@ -38,6 +38,4 @@ export const VersionProvider = ({ children }: { children: ReactNode }) => {
   return <VersionContext.Provider value={{ version, loading }}>{children}</VersionContext.Provider>
 }
 
-const useAppVersion = () => useContext(VersionContext)
-
-export default useAppVersion
+export const useAppVersion = () => useContext(VersionContext)

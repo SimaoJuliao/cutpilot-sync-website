@@ -26,7 +26,7 @@ const OsIcon = ({ id }: { id: PlatformId }) => {
   return <LinuxIcon />
 }
 
-const Download = () => {
+export const Download = () => {
   const { strings } = useLocale()
   const { detectedOS, platformUrls, version } = useDownload()
   const t = strings.download
@@ -98,4 +98,3 @@ const Download = () => {
   )
 }
 
-export default Download

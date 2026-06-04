@@ -4,7 +4,7 @@ import { useLocale } from '@hooks'
 
 const icons: LucideIcon[] = [Video, Sparkles, Monitor, UserCheck, Shield, Zap]
 
-const Features = () => {
+export const Features = () => {
   const { strings } = useLocale()
   const t = strings.features
 
@@ -44,4 +44,3 @@ const Features = () => {
   )
 }
 
-export default Features

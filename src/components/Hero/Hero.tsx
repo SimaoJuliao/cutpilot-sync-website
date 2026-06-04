@@ -2,9 +2,9 @@ import { Fragment } from 'react'
 import { Scissors, ArrowRight } from 'lucide-react'
 import { Button } from '@components/ui'
 import { useLocale, useAppVersion } from '@hooks'
-import AppMockup from '@components/AppMockup'
+import { AppMockup } from '@components/AppMockup'
 
-const Hero = () => {
+export const Hero = () => {
   const { strings } = useLocale()
   const { version } = useAppVersion()
   const t = strings.hero
@@ -69,4 +69,3 @@ const Hero = () => {
   )
 }
 
-export default Hero

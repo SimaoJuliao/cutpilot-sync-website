@@ -1,7 +1,7 @@
 import { Scissors, ArrowRight, CheckCircle } from 'lucide-react'
 import { useLocale } from '@hooks'
 
-const AppMockup = () => {
+export const AppMockup = () => {
   const { strings } = useLocale()
   const t = strings.mockup
 
@@ -72,4 +72,3 @@ const AppMockup = () => {
   )
 }
 
-export default AppMockup
