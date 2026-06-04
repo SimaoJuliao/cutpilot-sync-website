@@ -85,37 +85,42 @@ export const Download = () => {
               return (
                 <div
                   key={id}
-                  className="flex flex-col gap-4 p-6 rounded-xl border border-primary/50 bg-primary/8"
+                  className="animate-fade-up-in flex flex-col gap-4 p-6 rounded-xl border border-primary bg-primary/10 shadow-[0_0_40px_-8px_hsl(38_100%_63%_/0.35)]"
                 >
-                  {/* Header */}
-                  <div className="flex items-center justify-center gap-2 text-primary">
-                    <CheckCircle2 className="w-4 h-4 shrink-0" />
-                    <span className="font-display text-lg tracking-widest">{t.installGuide.started}</span>
+                  {/* OS icon + header */}
+                  <div className="flex flex-col items-center gap-2">
+                    <span className="text-primary opacity-80"><OsIcon id={id} /></span>
+                    <div className="flex items-center gap-1.5 text-primary">
+                      <CheckCircle2 className="w-4 h-4 shrink-0" />
+                      <span className="font-display text-xl tracking-widest">{t.installGuide.started}</span>
+                    </div>
                   </div>
 
+                  <div className="border-t border-primary/20" />
+
                   {/* Reason */}
-                  <p className="text-[10px] font-mono text-white/30 leading-relaxed text-center">
+                  <p className="text-[10px] font-mono text-white/40 leading-relaxed text-center">
                     {t.installGuide.reason}
                   </p>
 
-                  {/* Instructions */}
-                  <div className="flex flex-col gap-3 text-left">
-                    <p className="text-[10px] font-mono text-muted-foreground tracking-widest text-center">
-                      {guide.warning}
-                    </p>
-                    <ol className="flex flex-col gap-2">
-                      {guide.steps.map((step, i) => (
-                        <li key={i} className="flex items-start gap-2.5">
-                          <span className="text-[10px] font-mono text-primary/50 w-4 shrink-0 mt-0.5 text-right">
-                            {i + 1}.
-                          </span>
-                          <span className="text-[11px] font-mono text-foreground/60 leading-relaxed">
-                            {step}
-                          </span>
-                        </li>
-                      ))}
-                    </ol>
-                  </div>
+                  {/* Warning label */}
+                  <p className="text-[10px] font-mono text-primary/70 tracking-widest text-center">
+                    {guide.warning}
+                  </p>
+
+                  {/* Steps */}
+                  <ol className="flex flex-col gap-2.5">
+                    {guide.steps.map((step, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <span className="shrink-0 w-5 h-5 rounded-full bg-primary/15 border border-primary/40 flex items-center justify-center text-[9px] font-mono text-primary font-bold mt-0.5">
+                          {i + 1}
+                        </span>
+                        <span className="text-[11px] font-mono text-foreground/70 leading-relaxed text-left">
+                          {step}
+                        </span>
+                      </li>
+                    ))}
+                  </ol>
 
                   {/* Copyable command */}
                   {guide.command && <CopyCommand command={guide.command} />}
@@ -124,7 +129,7 @@ export const Download = () => {
                   <a
                     href={url}
                     onClick={(e) => { e.preventDefault(); window.location.href = url }}
-                    className="text-[10px] font-mono text-primary/40 hover:text-primary/70 transition-colors tracking-widest text-center mt-auto pt-1"
+                    className="text-[10px] font-mono text-primary/40 hover:text-primary/70 transition-colors tracking-widest text-center mt-auto pt-1 border-t border-primary/10 pt-3"
                   >
                     {t.installGuide.downloadAgain}
                   </a>

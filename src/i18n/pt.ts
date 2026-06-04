@@ -79,7 +79,7 @@ export const pt: Strings = {
       {
         title: 'MULTIPLATAFORMA',
         description:
-          'Aplicações nativas para Windows, macOS e Linux. Instala uma vez, corre localmente para sempre — sem mensalidades, sem subscrição.',
+          'Aplicações nativas para Windows, macOS e Linux. Instala uma vez, corre localmente para sempre',
       },
       {
         title: 'SÓ CRIAS UMA CONTA',

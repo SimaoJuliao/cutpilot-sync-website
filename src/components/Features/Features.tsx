@@ -32,8 +32,8 @@ export const Features = () => {
                   <Icon className="w-4 h-4 text-primary" strokeWidth={1.75} />
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <h3 className="font-display text-lg text-foreground tracking-wider">{item.title}</h3>
-                  <p className="text-xs font-mono text-muted-foreground leading-relaxed">{item.description}</p>
+                  <h3 className="font-display text-xl text-foreground tracking-wider">{item.title}</h3>
+                  <p className="text-xs lg:text-sm font-mono text-muted-foreground leading-relaxed">{item.description}</p>
                 </div>
               </div>
             )

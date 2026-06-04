@@ -36,7 +36,7 @@ export const HowItWorks = () => {
                 </div>
                 <div className="flex flex-col gap-2">
                   <h3 className="font-display text-xl text-foreground tracking-wider">{step.title}</h3>
-                  <p className="text-xs font-mono text-muted-foreground leading-relaxed">{step.description}</p>
+                  <p className="text-xs lg:text-sm font-mono text-muted-foreground leading-relaxed">{step.description}</p>
                 </div>
               </div>
             )

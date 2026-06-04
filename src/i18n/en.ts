@@ -85,7 +85,7 @@ export const en = {
       {
         title: 'MULTI-PLATFORM',
         description:
-          'Native desktop apps for Windows, macOS, and Linux. Install once, runs locally forever — no monthly fees, no subscription.',
+          'Native desktop apps for Windows, macOS, and Linux. Install once, runs locally forever.',
       },
       {
         title: 'JUST CREATE AN ACCOUNT',
